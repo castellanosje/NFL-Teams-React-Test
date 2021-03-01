@@ -25,12 +25,27 @@ export const TeamGridItem = ({color, alt_color, id, logos, mascot, school, abbre
             /*guardarlos en un array y buscar por dark en la carpeta final para priorizar el logo blanco*/
             FetchImage(logos[0]).then(status => {
                 const result = status ? logos[0] : defLogo;
-                setImage(result);
+                if(status){
+                    const tempResult = result.replace(/(^\w+:|^)\/\//, '');
+                    const finalResult = "https://"+tempResult;
+                    setImage(finalResult);
+
+                }else{
+                    setImage(result);
+                }
+                
              });
 
             FetchImage(logos[1]).then(status => {
                 const result = status ? logos[1] : defLogo;
-                setImage(result);
+                if(status){
+                    const tempResult = result.replace(/(^\w+:|^)\/\//, '');
+                    const finalResult = "https://"+tempResult;
+                    setImage(finalResult);
+
+                }else{
+                    setImage(result);
+                }
             });
         }
 
